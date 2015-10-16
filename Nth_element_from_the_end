@@ -25,4 +25,23 @@ int GetNode(Node *head,int positionFromTail)
         temp = temp ->next;
     }
     return(temp->data);
+    
+    /* -----------------------------Efficent Solution---------------------------------------------- */
+    
+int GetNode(Node *head,int positionFromTail)
+{ 
+    Node *fast = head; /* will point to the position from head */
+    Node *slow = head; /*point to the head */
+    
+    /* position to nth Node */
+    while(positionFromTail-- && fast->next != NULL){
+     fast = fast -> next;   
+    }
+    /* go together */
+    while(fast && fast->next != NULL){
+        fast = fast -> next;
+        slow = slow -> next;
+    }
+        return(slow->data);
 }
+
